@@ -10,6 +10,5 @@ COPY --from=base /go/bin/gotty /bin/
 
 EXPOSE 8080
 
-RUN apk add htop
 ENTRYPOINT [ "gotty", "-w" ]
 CMD [ "sh" ]
