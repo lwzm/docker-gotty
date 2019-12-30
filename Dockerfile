@@ -1,14 +1,13 @@
-FROM golang:alpine as base
+FROM golang as base
 
 LABEL maintainer="lwzm@qq.com"
 
 ARG repo=github.com/yudai/gotty
 
-RUN apk add git \
-    && go get $repo \
+RUN go get -d -v $repo \
     && cd src/$repo \
     && git checkout v1.0.1 \
-    && go build -ldflags "-s -w" \
+    && CGO_ENABLED=0 go build -ldflags "-s -w" \
     && mv gotty /
 
 FROM alpine
