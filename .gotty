@@ -1,0 +1,4 @@
+preferences {
+    font_family = "monospace"
+    font_size = 12
+}
